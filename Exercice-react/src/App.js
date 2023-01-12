@@ -42,11 +42,11 @@ const App = () => {
 
   const myReducer = (state, action) => {
     switch (action.type) {
-      case 'increment':
+      case 'add':
         return { count: state.count + 1,
           timeUsed: state.timeUsed + 1
         };
-      case 'decrement':
+      case 'remove':
         return { count: state.count - 1, 
           timeUsed: state.timeUsed + 1
         };
@@ -58,7 +58,7 @@ const App = () => {
   const myReducer1 = (state, action) => {
     switch (action.type) {
       case 'change':
-        console.log("ersvsrebv")
+        console.log("Changed")
         return { ...state,isMale: !state.isMale
         };
       default:
@@ -83,16 +83,16 @@ const App = () => {
       <h2>C'est parti</h2>
       <AddExpenses onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
-      <button onClick={() => setCounter({ type: 'decrement' })}>-</button>
-      <button onClick={() => setCounter({ type: 'increment' })}>+</button>
+      <button onClick={() => setCounter({ type: 'remove' })}>-</button>
+      <button onClick={() => setCounter({ type: 'add' })}>+</button>
       <div>Compteur : {counter.count}</div>
       <div>Nombre de fois utilisé :{counter.timeUsed}</div>
 
       <button onClick={() => setTekken({type: 'change'})}>Change character</button>
 
       <div>
-        {tekken1.isMale && <p>{tekken1.character} + {tekken1.gender}</p>}
-        {!tekken1.isMale && <p>{"Asuka"} + {"female"}</p>}
+        {tekken1.isMale && <p>{tekken1.character} is a {tekken1.gender}</p>}
+        {!tekken1.isMale && <p>{"Asuka"} is a {"female"}</p>}
 
       </div>      
     </div>
